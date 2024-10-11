@@ -1,12 +1,19 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction } from 'react';
 import styles from './product.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
   const [query, setQuery] = useState('');
-  const [products, setProducts] = useState([]);
+  interface Product {
+    id: number;
+    title: string;
+    price: number;
+    thumbnail: string;
+  }
+
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
 
   // Fetch products when the query changes
@@ -32,7 +39,9 @@ export default function Home() {
   }, [query]);
 
   // Handle input change
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setQuery(e.target.value);
   };
 

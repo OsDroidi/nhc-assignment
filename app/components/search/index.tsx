@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Empty } from '../svgs';
@@ -8,7 +8,14 @@ import SearchBar from '../search.bar';
 
 export default function Search() {
   const [query, setQuery] = useState('');
-  const [products, setProducts] = useState([]);
+  interface Product {
+    id: number;
+    title: string;
+    price: number;
+    thumbnail: string;
+  }
+
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
 
   // Fetch products when the query changes
@@ -34,7 +41,9 @@ export default function Search() {
   }, [query]);
 
   // Handle input change
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setQuery(e.target.value);
   };
 

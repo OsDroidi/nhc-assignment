@@ -3,8 +3,9 @@ import { SearchIcon } from '../svgs';
 import styles from '../search/search.module.scss';
 
 interface SearchBarProps {
-  query: string;
-  handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  query?: string;
+  setQuery?: (value: string) => void;
+  handleInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function SearchBar({
