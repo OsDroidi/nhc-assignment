@@ -1,0 +1,29 @@
+@import '@/styles/variables.scss';
+.header {
+  display: flex;
+  align-items: center;
+  gap: 68px;
+  background: #d9d9d91f;
+
+  height: 80px;
+  padding-left: 28px;
+  background: rgba(217, 217, 217, 0.12);
+  .logo {
+    fill: $NHC;
+    width: 58px;
+    height: 60px;
+  }
+  .link,
+  .active {
+    font-family: $Abel;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    &:hover {
+      color: $NHC;
+    }
+  }
+  .active {
+    color: $NHC;
+  }
+}
