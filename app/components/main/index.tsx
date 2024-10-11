@@ -4,8 +4,8 @@ import { useState, useEffect, SetStateAction } from 'react';
 
 const Main = () => {
   const [query, setQuery] = useState('');
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [, setProducts] = useState([]);
+  const [, setLoading] = useState(false);
 
   // Fetch products when the query changes
   useEffect(() => {
