@@ -48,11 +48,11 @@ const Search = () => {
   };
 
   return (
-    <main className="flex items-center flex-col">
+    <main className="flex items-center flex-col min-h-screen">
       <div className={styles['search-bar-container']}>
         <SearchBar query={query} handleInputChange={handleInputChange} />
         <div className={styles['count-results']}>
-          Total results count:
+          Total results count:{' '}
           <span className={styles['count']}>{products.length}</span>
         </div>
       </div>

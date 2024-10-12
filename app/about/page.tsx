@@ -4,7 +4,7 @@ import { items } from './data';
 
 export default function About() {
   return (
-    <div className="h-screen">
+    <div className="min-h-screen">
       <div
         className="flex justify-center"
         style={{
