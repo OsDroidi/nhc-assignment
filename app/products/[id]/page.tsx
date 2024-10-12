@@ -63,20 +63,55 @@ export default function Products() {
           </div>
           <div className={styles['product-details']}>
             <div className={styles['right-column']}>
-              {product.price && <p>Price: ${product.price}</p>}
+              {product.price && (
+                <span className={styles['product-number']}>
+                  <p>Price: ${product.price}</p>
+                </span>
+              )}
               {product.rating && (
-                <p>
+                <p
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
                   Rating: <StarRating rating={product.rating} />
                 </p>
               )}
-              {product.brand && <p>Brand: {product.brand}</p>}
+              {product.brand && (
+                <p>
+                  Brand:{' '}
+                  <span className={styles['product-number']}>
+                    {product.brand}
+                  </span>
+                </p>
+              )}
             </div>
             <div className={styles['left-column']}>
               {product.discountPercentage && (
-                <p>Discount: {product.discountPercentage}</p>
+                <p>
+                  Discount Percentage:{' '}
+                  <span className={styles['product-number']}>
+                    {product.discountPercentage}
+                  </span>
+                </p>
               )}
-              {product.stock && <p>Stock: {product.stock}</p>}
-              {product.category && <p>Category: {product.category}</p>}
+              {product.stock && (
+                <p>
+                  Stock:{' '}
+                  <span className={styles['product-number']}>
+                    {product.stock}
+                  </span>
+                </p>
+              )}
+              {product.category && (
+                <p>
+                  Category:{' '}
+                  <span className={styles['product-number']}>
+                    {product.category}
+                  </span>
+                </p>
+              )}
             </div>
           </div>
         </div>
