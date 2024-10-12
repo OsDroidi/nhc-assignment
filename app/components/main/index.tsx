@@ -18,6 +18,9 @@ const Main = () => {
     }
   };
 
+  const handleSearchClick = () => {
+    router.push(`/products?query=${query}`);
+  };
   return (
     <main className="flex items-center justify-center h-screen flex-col">
       <SearchBar
@@ -25,6 +28,7 @@ const Main = () => {
         setQuery={setQuery}
         handleInputChange={handleInputChange}
         handleKeyPress={handleKeyPress}
+        handleSearchClick={handleSearchClick}
       />
     </main>
   );

@@ -7,13 +7,15 @@ interface SearchBarProps {
   query?: string;
   setQuery?: (value: string) => void;
   handleInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleKeyPress?: () => (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  handleKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  handleSearchClick?: () => void;
 }
 
 const SearchBar = ({
   query,
   handleInputChange,
   handleKeyPress,
+  handleSearchClick,
 }: SearchBarProps) => {
   return (
     <div>
@@ -27,7 +29,7 @@ const SearchBar = ({
           placeholder="Search keyword"
           onKeyDown={handleKeyPress}
         />
-        <SearchIcon onClick={handleKeyPress} />
+        <SearchIcon onClick={handleSearchClick} />
       </div>
     </div>
   );
