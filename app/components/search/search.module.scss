@@ -1,22 +1,18 @@
 @import '@/styles/variables.scss';
 
-/* Rectangle 3 */
 .search-input {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-left: 12px;
   padding-right: 15.57px;
-
   width: 738.57px;
   height: 50px;
-
   background: #f3f3f3;
   border: 1px solid rgba(0, 100, 131, 0.82);
   border-radius: 8px;
-
   &:hover {
-    border: 1px solid #285f9d;
+    border: 2px solid #024da2;
   }
 
   &::placeholder {
@@ -51,16 +47,11 @@
   padding-bottom: 37px;
   color: #000000;
   span {
-    font-family: Inter;
+    font-family: $Inter;
     font-size: 16px;
-    font-weight: 700;
-    line-height: 19.36px;
-
-    color: $NHC;
+    font-weight: 400;
   }
 }
-
-@import '@/styles/variables.scss';
 
 .products-container {
   width: 975px;
