@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className={styles['footer-bg']}>
       <div className={styles['footer']}>
-        <div>
+        <div className={styles['footer-logos']}>
           <NHCLogo className={styles['logo']} />
           <Vision2030 />
         </div>

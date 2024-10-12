@@ -6,29 +6,28 @@
 }
 
 .title {
-  font-family: $Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 40px;
+  font-family: $Abel;
+  font-weight: 400;
+  font-size: 16px;
 
-  color: $NHC;
+  color: #285f9d;
+  padding-bottom: 11px;
 }
 
 .content {
   font-family: $Abel;
-  font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
 
   color: #000000;
+
+  padding-bottom: 22px;
 }
 
 .items-container {
-  padding-top: 54px;
   width: 1095px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 196px;
   @media (max-width: $breakpoint-md) {
     width: 100%;
     padding: 0 20px;

@@ -34,7 +34,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cdn.dummyjson.com',
         port: '',
-        pathname: '/products/images/**',
+        pathname: '/products/images/**', // This matches the image paths
       },
     ],
   },

@@ -1,4 +1,3 @@
-'use client';
 import { useState, useEffect, SetStateAction } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,13 +5,14 @@ import { Empty } from '../svgs';
 import styles from './search.module.scss';
 import SearchBar from '../search.bar';
 
-export default function Search() {
+const Search = () => {
   const [query, setQuery] = useState('');
   interface Product {
     id: number;
     title: string;
     price: number;
     thumbnail: string;
+    description: string;
   }
 
   const [products, setProducts] = useState<Product[]>([]);
@@ -48,23 +48,17 @@ export default function Search() {
   };
 
   return (
-    <main>
-      <div className="flex items-center flex-col justify-center">
-        <SearchBar
-          // add props
-          query={query}
-          setQuery={setQuery}
-          handleInputChange={handleInputChange}
-        />
+    <main className="flex items-center flex-col">
+      <div className={styles['search-bar-container']}>
+        <SearchBar query={query} handleInputChange={handleInputChange} />
         <div className={styles['count-results']}>
-          Total results count:{' '}
-          <span className={styles['count']}>{products.length || 0}</span>
+          Total results count:
+          <span className={styles['count']}>{products.length}</span>
         </div>
       </div>
       <div style={{ padding: '20px' }}>
         {loading && <p>Loading...</p>}
-
-        {!loading && products.length === 0 && (
+        {products.length === 0 && !loading && (
           <div className={styles['no-results']}>
             <Empty />
             <p>No results for your search!</p>
@@ -87,14 +81,19 @@ export default function Search() {
                     className={styles['thumbnail']}
                   />
                 </div>
-                <div>
+                <div className={styles['product-content']}>
                   <h2 className={styles['product-title']}>{product.title}</h2>
-                  <p className={styles['product-price']}>
-                    Price:
-                    <span className={styles['price']}>${product.price}</span>
+                  <p className={styles['product-description']}>
+                    {product.description}
                   </p>
+                  <div className={styles['more-container']}>
+                    <p className={styles['product-price']}>
+                      Price:
+                      <span className={styles['price']}>${product.price}</span>
+                    </p>
+                    <button className={styles['btn-more']}>More</button>
+                  </div>
                 </div>
-                <button className={styles['btn-more']}>More</button>
               </Link>
             </li>
           ))}
@@ -102,4 +101,6 @@ export default function Search() {
       </div>
     </main>
   );
-}
+};
+
+export default Search;

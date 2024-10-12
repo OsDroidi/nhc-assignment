@@ -15,33 +15,16 @@
   border: 1px solid rgba(0, 100, 131, 0.82);
   border-radius: 8px;
 
-  // focus effect
-  &:focus {
-    border: 1px solid #006484;
-  }
-  // active
-  &:active {
-    border: 1px solid #006484;
-  }
-  // hover
   &:hover {
-    border: 1px solid #006484;
-  }
-  // other effects
-  &:disabled {
-    background: #e0e0e0;
+    border: 1px solid #285f9d;
   }
 
-  // place holder padding
   &::placeholder {
     padding-left: 20px;
-
-    font-family: 'Inter';
-    font-style: normal;
+    font-family: $Inter;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
-
     color: #7f7f7f;
   }
 
@@ -52,7 +35,7 @@
 
 .search-title {
   font-family: $Inter;
-  font-style: normal;
+
   font-weight: 500;
   font-size: 18px;
 
@@ -64,10 +47,9 @@
   font-family: $Inter;
   font-size: 16px;
   font-weight: 400;
-  line-height: 19.36px;
-
+  padding-top: 25px;
+  padding-bottom: 37px;
   color: #000000;
-
   span {
     font-family: Inter;
     font-size: 16px;
@@ -121,8 +103,8 @@
 }
 
 .product-title {
-  font-family: 'Inter';
-  font-style: normal;
+  font-family: $Inter;
+
   font-weight: 500;
   font-size: 20px;
 
@@ -130,8 +112,8 @@
 }
 
 .product-price {
-  font-family: 'Inter';
-  font-style: normal;
+  font-family: $Inter;
+
   font-weight: 400;
   font-size: 16px;
   color: #000000;
@@ -161,7 +143,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-family: 'Inter';
+  font-family: $Inter;
   font-weight: 400;
   font-size: 16px;
 
@@ -177,4 +159,30 @@
   outline: none;
   margin: 0;
   background: none;
+}
+
+.product-description {
+  font-family: $Inter;
+
+  font-weight: 400;
+  font-size: 16px;
+
+  color: #7f7f7f;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-bar-container {
+  padding-top: 38px;
+}
+.more-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  align-items: center;
+}
+.product-content {
+  padding: 9px;
 }

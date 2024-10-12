@@ -4,8 +4,14 @@ import { items } from './data';
 
 export default function About() {
   return (
-    <div>
-      <div className="flex justify-center items-center">
+    <div className="h-screen">
+      <div
+        className="flex justify-center"
+        style={{
+          paddingTop: '67px',
+          paddingBottom: '54px',
+        }}
+      >
         <NHCLogo className={styles['logo']} />
       </div>
       {items.map((item) => (

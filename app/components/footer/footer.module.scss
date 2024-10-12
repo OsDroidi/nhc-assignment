@@ -2,20 +2,17 @@
 .footer-bg {
   background: #292759;
   margin-top: auto;
+  height: 129px;
 }
 .footer {
-  height: 1px;
-  border-top: 1px solid #f1f1f1;
-
   display: flex;
   align-items: center;
-
   height: 129px;
-
   justify-content: space-between;
   color: #fff;
   width: 1200px;
-  @media (max-width: $breakpoint-md) {
+  margin: 0 auto;
+  @media (max-width: 768px) {
     width: 100%;
     padding: 0 20px;
   }
@@ -25,4 +22,9 @@
   fill: #fff;
   width: 30.86px;
   height: 32px;
+}
+
+.footer-logos {
+  display: flex;
+  gap: 20px;
 }

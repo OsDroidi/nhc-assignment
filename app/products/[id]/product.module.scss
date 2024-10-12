@@ -1,0 +1,61 @@
+@import '@/styles/variables.scss';
+
+.product-title {
+  padding-top: 28px;
+  font-family: $Inter;
+  font-weight: 500;
+  font-size: 30px;
+  text-align: center;
+  color: #285f9d;
+  padding-bottom: 37px;
+}
+
+.product-image {
+  width: 473.75px;
+  height: 250px;
+  border-radius: 10px;
+  padding-bottom: 24px;
+}
+
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px; /* adjust to fit your design */
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.left-column,
+.right-column {
+  width: 48%; /* evenly distribute space */
+}
+
+.product-description,
+.product-images {
+  font-weight: 400;
+  font-size: 18px;
+  color: #000000;
+  padding-bottom: 7px;
+}
+.product-description-content {
+  font-family: $Inter;
+  font-weight: 400;
+  font-size: 16px;
+  color: #7f7f7f;
+  padding-bottom: 22px;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22.73px;
+  padding-bottom: 187px;
+}
+
+.product-gallery-image {
+  width: 227.27px;
+  height: 120px;
+
+  border-radius: 10px;
+}

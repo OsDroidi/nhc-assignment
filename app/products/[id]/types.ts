@@ -1,4 +1,5 @@
 export interface Product {
+  discountPercentage: number;
   id: number;
   title: string;
   description: string;
