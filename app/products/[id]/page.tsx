@@ -88,7 +88,7 @@ export default function Products() {
         )}
         <div className={styles['product-images']}>Product Images</div>
         <div className={styles['gallery']}>
-          {/* {product.images.map((image, index) => (
+          {product.images.map((image, index) => (
             <Image
               key={index}
               src={image || '/placeholder.png'}
@@ -97,8 +97,8 @@ export default function Products() {
               height={120}
               className={styles['product-gallery-image']}
             />
-          ))} */}
-          <Image
+          ))}
+          {/* <Image
             src={'/iphone.png'}
             alt="iphone"
             width={227.27}
@@ -118,7 +118,7 @@ export default function Products() {
             width={227.27}
             height={120}
             className={styles['product-gallery-image']}
-          />
+          /> */}
         </div>
       </div>
     </div>
