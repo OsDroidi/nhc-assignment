@@ -65,7 +65,7 @@ export default function Products() {
             <div className={styles['right-column']}>
               {product.price && (
                 <p className={styles['product-text']}>
-                  Price:
+                  Price:{' '}
                   <span className={styles['product-number']}>
                     ${product.price}
                   </span>
