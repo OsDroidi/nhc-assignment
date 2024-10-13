@@ -4,15 +4,8 @@ import Link from 'next/link';
 import { Empty } from '../svgs';
 import styles from './search.module.scss';
 import SearchBar from '../search.bar';
-import { useSearchParams } from 'next/navigation'; // Import useRouter to manage URL
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  thumbnail: string;
-  description: string;
-}
+import { useSearchParams } from 'next/navigation';
+import { Product } from './types';
 
 export default function Search() {
   const [products, setProducts] = useState<Product[]>([]);

@@ -1,9 +1,6 @@
 import { useMemo } from 'react';
-import { GrayStar, Star } from '@/components/svgs'; // Ensure correct path to SVGs
-
-interface StarRatingProps {
-  rating: number;
-}
+import { GrayStar, Star } from '@/components/svgs';
+import { StarRatingProps } from './types';
 
 export default function StarRating({ rating }: StarRatingProps) {
   const starRating = useMemo(() => {
