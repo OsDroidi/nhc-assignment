@@ -3,13 +3,16 @@
   fill: $NHC;
   width: 241.67px;
   height: 250px;
+  @media (max-width: $breakpoint-md) {
+    width: 120.83px;
+    height: 125px;
+  }
 }
 
 .title {
   font-family: $Abel;
   font-weight: 400;
   font-size: 16px;
-
   color: #285f9d;
   padding-bottom: 11px;
 }
@@ -18,9 +21,7 @@
   font-family: $Abel;
   font-weight: 400;
   font-size: 16px;
-
   color: #000000;
-
   padding-bottom: 22px;
 }
 
@@ -28,6 +29,10 @@
   width: 1095px;
   margin-left: auto;
   margin-right: auto;
+  @media (max-width: $breakpoint-lg) {
+    width: auto;
+    padding: 0 20px;
+  }
   @media (max-width: $breakpoint-md) {
     width: 100%;
     padding: 0 20px;

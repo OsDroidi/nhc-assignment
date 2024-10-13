@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { NavLinks } from './links';
 import { usePathname } from 'next/navigation';
 
-const Header = () => {
+export default function Header() {
   const pathname = usePathname();
 
   return (
@@ -28,6 +28,4 @@ const Header = () => {
       })}
     </header>
   );
-};
-
-export default Header;
+}

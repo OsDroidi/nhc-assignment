@@ -64,9 +64,12 @@ export default function Products() {
           <div className={styles['product-details']}>
             <div className={styles['right-column']}>
               {product.price && (
-                <span className={styles['product-number']}>
-                  <p>Price: ${product.price}</p>
-                </span>
+                <p className={styles['product-text']}>
+                  Price:
+                  <span className={styles['product-number']}>
+                    ${product.price}
+                  </span>
+                </p>
               )}
               {product.rating && (
                 <p
@@ -74,12 +77,13 @@ export default function Products() {
                     display: 'flex',
                     alignItems: 'center',
                   }}
+                  className={styles['product-text']}
                 >
                   Rating: <StarRating rating={product.rating} />
                 </p>
               )}
               {product.brand && (
-                <p>
+                <p className={styles['product-text']}>
                   Brand:{' '}
                   <span className={styles['product-number']}>
                     {product.brand}
@@ -89,7 +93,7 @@ export default function Products() {
             </div>
             <div className={styles['left-column']}>
               {product.discountPercentage && (
-                <p>
+                <p className={styles['product-text']}>
                   Discount Percentage:{' '}
                   <span className={styles['product-number']}>
                     {product.discountPercentage}
@@ -97,7 +101,7 @@ export default function Products() {
                 </p>
               )}
               {product.stock && (
-                <p>
+                <p className={styles['product-text']}>
                   Stock:{' '}
                   <span className={styles['product-number']}>
                     {product.stock}
@@ -105,7 +109,7 @@ export default function Products() {
                 </p>
               )}
               {product.category && (
-                <p>
+                <p className={styles['product-text']}>
                   Category:{' '}
                   <span className={styles['product-number']}>
                     {product.category}

@@ -31,10 +31,8 @@
 
 .search-title {
   font-family: $Inter;
-
   font-weight: 500;
   font-size: 18px;
-
   color: #285f9d;
   padding-bottom: 21px;
 }
@@ -54,20 +52,24 @@
 }
 
 .products-container {
-  width: 975px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 34px;
   justify-content: center;
   justify-items: center;
   margin: 0 auto;
-  @media (max-width: 1024px) {
+  width: 100%;
+  list-style-type: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  @media (max-width: $breakpoint-lg) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (max-width: 768px) {
+  @media (max-width: $breakpoint-md) {
     grid-template-columns: repeat(1, 1fr);
   }
-  //   hover effect zoom the thumbnail
+  // hover effect zoom the thumbnail
   .product {
     transition: transform 0.2s;
     &:hover {
@@ -87,17 +89,17 @@
 .thumbnail {
   width: 284.13px;
   height: 150px;
-
-  padding: 9px 0 12px 0;
+  padding-top: 9px;
   margin: 0 auto;
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+  }
 }
 
 .product-title {
   font-family: $Inter;
-
   font-weight: 500;
   font-size: 20px;
-
   color: $NHC;
 }
 
@@ -115,7 +117,6 @@
 }
 .btn-more {
   background: $NHC;
-
   width: 85px;
   height: 40px;
   width: 85px;
@@ -132,10 +133,12 @@
   font-family: $Inter;
   font-weight: 400;
   font-size: 16px;
-
   text-align: center;
-
   color: #7f7f7f;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 20px;
+  }
 }
 
 .search-bar {

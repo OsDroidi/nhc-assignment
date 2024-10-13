@@ -3,7 +3,7 @@ import SearchBar from '../search.bar';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-const Main = () => {
+export default function Main() {
   const [query, setQuery] = useState('');
   const router = useRouter();
 
@@ -13,7 +13,6 @@ const Main = () => {
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      setQuery(query);
       router.push(`/products?query=${query}`);
     }
   };
@@ -21,6 +20,7 @@ const Main = () => {
   const handleSearchClick = () => {
     router.push(`/products?query=${query}`);
   };
+
   return (
     <main className="flex items-center justify-center h-screen flex-col">
       <SearchBar
@@ -32,6 +32,4 @@ const Main = () => {
       />
     </main>
   );
-};
-
-export default Main;
+}

@@ -11,12 +11,12 @@ interface SearchBarProps {
   handleSearchClick?: () => void;
 }
 
-const SearchBar = ({
+export default function SearchBar({
   query,
   handleInputChange,
   handleKeyPress,
   handleSearchClick,
-}: SearchBarProps) => {
+}: SearchBarProps) {
   return (
     <div>
       <div className={styles['search-title']}>Search products by keyword</div>
@@ -33,6 +33,4 @@ const SearchBar = ({
       </div>
     </div>
   );
-};
-
-export default SearchBar;
+}

@@ -1,26 +1,33 @@
-import { useState, useEffect, SetStateAction } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Empty } from '../svgs';
 import styles from './search.module.scss';
 import SearchBar from '../search.bar';
+import { useSearchParams } from 'next/navigation'; // Import useRouter to manage URL
 
-const Search = () => {
-  const [query, setQuery] = useState('');
-  interface Product {
-    id: number;
-    title: string;
-    price: number;
-    thumbnail: string;
-    description: string;
-  }
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  thumbnail: string;
+  description: string;
+}
 
+export default function Search() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState('');
+  const searchParams = useSearchParams();
 
-  // Fetch products when the query changes
+  // On initial render, grab the query from the URL and set it in the state
   useEffect(() => {
-    if (query.length > 0) {
+    const initialQuery = searchParams.get('query') || '';
+    setQuery(initialQuery); // Set the query based on the URL on page load
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (query && query.length > 0) {
       const fetchData = async () => {
         setLoading(true);
         try {
@@ -40,11 +47,9 @@ const Search = () => {
     }
   }, [query]);
 
-  // Handle input change
-  const handleInputChange = (e: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setQuery(e.target.value);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newQuery = e.target.value;
+    setQuery(newQuery);
   };
 
   return (
@@ -65,10 +70,7 @@ const Search = () => {
             <p>Try another keyword</p>
           </div>
         )}
-        <ul
-          className={styles['products-container']}
-          style={{ listStyleType: 'none', paddingLeft: 0 }}
-        >
+        <ul className={styles['products-container']}>
           {products.map((product) => (
             <li key={product.id} className={styles['product']}>
               <Link href={`/products/${product.id}`}>
@@ -88,7 +90,7 @@ const Search = () => {
                   </p>
                   <div className={styles['more-container']}>
                     <p className={styles['product-price']}>
-                      Price:
+                      Price:{' '}
                       <span className={styles['price']}>${product.price}</span>
                     </p>
                     <button className={styles['btn-more']}>More</button>
@@ -101,6 +103,4 @@ const Search = () => {
       </div>
     </main>
   );
-};
-
-export default Search;
+}
