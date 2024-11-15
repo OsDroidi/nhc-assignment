@@ -2,7 +2,7 @@
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import StarRating from '@/components/rating';
+import StarRating from 'components/rating';
 import { Product } from './types';
 import styles from './product.module.scss';
 

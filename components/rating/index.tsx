@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { GrayStar, Star } from '@/components/svgs';
+import { GrayStar, Star } from 'components/svgs';
 import { StarRatingProps } from './types';
 
 export default function StarRating({ rating }: StarRatingProps) {

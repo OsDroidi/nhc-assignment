@@ -1,4 +1,4 @@
-import { NHCLogo } from '../components/svgs';
+import { NHCLogo } from 'components/svgs';
 import styles from './about.module.scss';
 import { items } from './data';
 
