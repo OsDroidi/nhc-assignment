@@ -1,7 +1,10 @@
 'use client';
-import React from 'react';
-import { SearchIcon } from '../svgs';
+
 import styles from '../search/search.module.scss';
+
+import React from 'react';
+
+import { SearchIcon } from '../svgs';
 
 interface SearchBarProps {
   query?: string;

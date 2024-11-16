@@ -1,5 +1,7 @@
-import { NHCLogo } from 'components/svgs';
 import styles from './about.module.scss';
+
+import { NHCLogo } from 'components/svgs';
+
 import { items } from './data';
 
 export default function About() {

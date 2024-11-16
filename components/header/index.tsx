@@ -1,10 +1,12 @@
 'use client';
 
 import styles from './header.module.scss';
-import { NHCLogo } from '../svgs';
+
 import Link from 'next/link';
-import { NavLinks } from './links';
 import { usePathname } from 'next/navigation';
+
+import { NHCLogo } from '../svgs';
+import { NavLinks } from './links';
 
 export default function Header() {
   const pathname = usePathname();

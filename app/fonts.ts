@@ -1,4 +1,4 @@
-import { Inter, Abel } from 'next/font/google';
+import { Abel, Inter } from 'next/font/google';
 
 export const inter = Inter({
   subsets: ['latin'],

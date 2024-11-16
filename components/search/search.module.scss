@@ -90,6 +90,7 @@
   height: 150px;
   padding-top: 9px;
   margin: 0 auto;
+  object-fit: cover;
   @media (max-width: $breakpoint-md) {
     width: 100%;
   }

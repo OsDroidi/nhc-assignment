@@ -1,10 +1,14 @@
 'use client';
-import { useParams } from 'next/navigation';
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import StarRating from 'components/rating';
-import { Product } from './types';
+
 import styles from './product.module.scss';
+
+import { useEffect, useState } from 'react';
+
+import StarRating from 'components/rating';
+import Image from 'next/image';
+import { useParams } from 'next/navigation';
+
+import { Product } from './types';
 
 export default function Products() {
   const params = useParams();
