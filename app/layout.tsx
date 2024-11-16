@@ -4,6 +4,7 @@ import Footer from 'components/footer';
 import Header from 'components/header';
 import type { Metadata } from 'next';
 import { StoreProvider } from 'store/StoreProvider';
+import { QueryProvider } from 'utils/QueryProvider';
 
 import { abel, inter } from './fonts';
 
@@ -19,13 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <StoreProvider>
-      <html lang="en">
-        <body className={`${inter.variable} ${abel.variable}`}>
-          <Header />
-          {children}
-          <Footer />
-        </body>
-      </html>
+      <QueryProvider>
+        <html lang="en">
+          <body className={`${inter.variable} ${abel.variable}`}>
+            <Header />
+            {children}
+            <Footer />
+          </body>
+        </html>
+      </QueryProvider>
     </StoreProvider>
   );
 }

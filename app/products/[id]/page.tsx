@@ -2,43 +2,28 @@
 
 import styles from './product.module.scss';
 
-import { useEffect, useState } from 'react';
-
+import { useQuery } from '@tanstack/react-query';
 import StarRating from 'components/rating';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-
-import { Product } from './types';
+import { fetchProductById } from 'utils/api';
 
 export default function Products() {
   const params = useParams();
-  const { id } = params;
+  const id = Array.isArray(params.id) ? params.id[0] : params.id;
 
-  const [product, setProduct] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['product', id], // Unique key for this query
+    queryFn: () => fetchProductById(id), // Query function
+    enabled: !!id, // Only run the query if ID is present
+  });
 
-  const [imageError, setImageError] = useState(false); // Track image loading error
-
-  useEffect(() => {
-    if (id) {
-      const fetchProduct = async () => {
-        setLoading(true);
-        try {
-          const res = await fetch(`https://dummyjson.com/products/${id}`);
-          const data = await res.json();
-          setProduct(data);
-        } catch (error) {
-          console.error('Error fetching product details:', error);
-        }
-        setLoading(false);
-      };
-
-      fetchProduct();
-    }
-  }, [id]);
-
-  if (loading) return <p>Loading product details...</p>;
-
+  if (isLoading) return <p>Loading product details...</p>;
+  if (error) return <p>Failed to load product details</p>;
   if (!product) return <p>Product not found</p>;
 
   return (
@@ -53,17 +38,13 @@ export default function Products() {
           }}
         >
           <div className={styles['product-image']}>
-            {!imageError && (
-              <Image
-                src={product.thumbnail}
-                alt={`Image of ${product.title}`}
-                width={473.75}
-                height={250}
-                className={styles['product-image']}
-                onError={() => setImageError(true)} // Set imageError to true on error
-              />
-            )}
-            {imageError && <p>Image could not be loaded.</p>}{' '}
+            <Image
+              src={product.thumbnail}
+              alt={`Image of ${product.title}`}
+              width={473.75}
+              height={250}
+              className={styles['product-image']}
+            />
           </div>
           <div className={styles['product-details']}>
             <div className={styles['right-column']}>
@@ -131,7 +112,7 @@ export default function Products() {
         )}
         <div className={styles['product-images']}>Product Images</div>
         <div className={styles['gallery']}>
-          {product.images.map((image, index) => (
+          {product.images.map((image: string, index: number) => (
             <Image
               key={index}
               src={image || '/placeholder.png'}
@@ -141,27 +122,6 @@ export default function Products() {
               className={styles['product-gallery-image']}
             />
           ))}
-          {/* <Image
-            src={'/iphone.png'}
-            alt="iphone"
-            width={227.27}
-            height={120}
-            className={styles['product-gallery-image']}
-          />
-          <Image
-            src={'/iphone.png'}
-            alt="iphone"
-            width={227.27}
-            height={120}
-            className={styles['product-gallery-image']}
-          />
-          <Image
-            src={'/iphone.png'}
-            alt="iphone"
-            width={227.27}
-            height={120}
-            className={styles['product-gallery-image']}
-          /> */}
         </div>
       </div>
     </div>
