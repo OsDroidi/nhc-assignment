@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from './slice';
+import queryReducer from './querySlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    queries: queryReducer,
   },
 });
 
