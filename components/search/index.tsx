@@ -1,12 +1,12 @@
 import styles from './search.module.scss';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import { debounce } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
+import { useSearchProductsQuery } from 'store/apiSlice';
 import { setQuery } from 'store/querySlice';
 import type { RootState } from 'store/store';
 
@@ -15,14 +15,9 @@ import { Empty } from '../svgs';
 import { Product } from './types';
 
 export default function Search() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
-
   const query = useSelector((state: RootState) => state.queries.value);
   const dispatch = useDispatch();
-
-  console.log('query:', query);
 
   // On initial render, grab the query from the URL and set it in the state
   useEffect(() => {
@@ -30,30 +25,9 @@ export default function Search() {
     dispatch(setQuery(initialQuery));
   }, [dispatch, searchParams]);
 
-  const fetchData = async (query: string) => {
-    setLoading(true);
-    try {
-      const res = await fetch(
-        `https://dummyjson.com/products/search?q=${query}`,
-      );
-      const data = await res.json();
-      setProducts(data.products);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-    setLoading(false);
-  };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debouncedFetchData = useCallback(debounce(fetchData, 1000), []);
-
-  useEffect(() => {
-    if (query && query.length > 0) {
-      debouncedFetchData(query);
-    } else {
-      setProducts([]); // Reset products when query is empty
-    }
-  }, [query, debouncedFetchData]);
+  const { data, isLoading } = useSearchProductsQuery(query, {
+    skip: !query, // Skip the query if the search term is empty
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = e.target.value;
@@ -66,12 +40,12 @@ export default function Search() {
         <SearchBar query={query} handleInputChange={handleInputChange} />
         <div className={styles['count-results']}>
           Total results count:{' '}
-          <span className={styles['count']}>{products.length}</span>
+          <span className={styles['count']}>{data?.products?.length || 0}</span>
         </div>
       </div>
       <div style={{ padding: '20px' }}>
-        {loading && <p>Loading...</p>}
-        {products.length === 0 && !loading && (
+        {isLoading && <p>Loading...</p>}
+        {data?.products?.length === 0 && !isLoading && (
           <div className={styles['no-results']}>
             <Empty />
             <p>No results for your search!</p>
@@ -79,7 +53,7 @@ export default function Search() {
           </div>
         )}
         <ul className={styles['products-container']}>
-          {products.map((product) => (
+          {data?.products?.map((product: Product) => (
             <li key={product.id} className={styles['product']}>
               <Link href={`/products/${product.id}`}>
                 <div className={styles['thumbnail']}>
