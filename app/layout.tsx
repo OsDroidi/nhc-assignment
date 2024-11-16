@@ -1,9 +1,11 @@
-import type { Metadata } from 'next';
 import './globals.css';
+
 import Footer from 'components/footer';
 import Header from 'components/header';
-import { inter, abel } from './fonts';
+import type { Metadata } from 'next';
 import { StoreProvider } from 'store/StoreProvider';
+
+import { abel, inter } from './fonts';
 
 export const metadata: Metadata = {
   title: 'NHC',

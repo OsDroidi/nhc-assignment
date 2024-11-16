@@ -1,15 +1,18 @@
-import { useState, useEffect, useCallback } from 'react';
+import styles from './search.module.scss';
+
+import { useCallback, useEffect, useState } from 'react';
+
+import { debounce } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Empty } from '../svgs';
-import styles from './search.module.scss';
-import SearchBar from '../search.bar';
 import { useSearchParams } from 'next/navigation';
-import { Product } from './types';
-import type { RootState } from 'store/store';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setQuery } from 'store/querySlice';
-import { debounce } from 'lodash';
+import type { RootState } from 'store/store';
+
+import SearchBar from '../search.bar';
+import { Empty } from '../svgs';
+import { Product } from './types';
 
 export default function Search() {
   const [products, setProducts] = useState<Product[]>([]);

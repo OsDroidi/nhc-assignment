@@ -1,10 +1,12 @@
 'use client';
-import SearchBar from '../search.bar';
+
 import { useRouter } from 'next/navigation';
-import { setQuery } from 'store/querySlice';
-import type { RootState } from 'store/store';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { setQuery } from 'store/querySlice';
+import type { RootState } from 'store/store';
+
+import SearchBar from '../search.bar';
 
 export default function Main() {
   const router = useRouter();

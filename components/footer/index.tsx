@@ -1,5 +1,6 @@
-import { NHCLogo, Vision2030 } from '../svgs';
 import styles from './footer.module.scss';
+
+import { NHCLogo, Vision2030 } from '../svgs';
 
 export default function Footer() {
   return (
