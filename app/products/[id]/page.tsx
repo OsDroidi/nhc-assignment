@@ -76,7 +76,7 @@ export default function Products() {
                 </p>
               )}
               {product.rating && (
-                <p
+                <div
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -84,7 +84,7 @@ export default function Products() {
                   className={styles['product-text']}
                 >
                   Rating: <StarRating rating={product.rating} />
-                </p>
+                </div>
               )}
               {product.brand && (
                 <p className={styles['product-text']}>
