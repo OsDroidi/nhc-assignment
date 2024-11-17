@@ -1,20 +1,17 @@
 'use client';
 
+import { useState } from 'react';
+
 import { useRouter } from 'next/navigation';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { setQuery } from 'store/querySlice';
-import type { RootState } from 'store/store';
 
 import SearchBar from '../search.bar';
 
 export default function Main() {
+  const [query, setQuery] = useState('');
   const router = useRouter();
-  const query = useSelector((state: RootState) => state.queries.value);
-  const dispatch = useDispatch();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setQuery(e.target.value));
+    setQuery(e.target.value);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
